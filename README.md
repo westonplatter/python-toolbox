@@ -1,24 +1,20 @@
-# README
+# python-toolbox
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## dev
 
-Things you may want to cover:
+- ruby
+- postgres
+- redis
 
-* Ruby version
+## test
 
-* System dependencies
+```sh
+rake spec
+```
 
-* Configuration
+## production
 
-* Database creation
+```sh
+cap production deploy
+```
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
