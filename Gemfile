@@ -33,6 +33,7 @@ gem 'pundit'
 # gem 'oj'
 # gem 'rabl'
 gem 'ransack', github: 'activerecord-hackery/ransack'
+gem 'react_on_rails'
 gem 'rolify'
 gem 'rollbar'
 # gem 'rubocop', require: false
