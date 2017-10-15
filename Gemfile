@@ -109,3 +109,5 @@ group :test do
   gem 'database_cleaner'
   # gem 'launchy'
 end
+
+gem 'mini_racer', platforms: :ruby
