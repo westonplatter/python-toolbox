@@ -1,4 +1,8 @@
 - [x] setup important routes
+- [ ] setup the theme,
+  - [x] layout
+  - [ ] header
+  - [ ] footer
 - [ ] install sidekiq
 
 - [ ] create basic models
