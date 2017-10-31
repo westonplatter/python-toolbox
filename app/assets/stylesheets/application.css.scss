@@ -1,5 +1,6 @@
+// ordering is important. see https://github.com/maxim/bootswatch-rails#usage
 @import "bootstrap-sprockets";
+@import "bootstrap/mixins";
+@import "bootswatch/simplex/variables";
 @import "bootstrap";
-
-@import "_variables";
-@import "_bootswatch";
+@import "bootswatch/simplex/bootswatch";
