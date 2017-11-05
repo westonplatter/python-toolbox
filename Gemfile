@@ -22,6 +22,7 @@ gem 'jquery-rails'
 gem 'pg'
 gem 'puma'
 gem 'pundit'
+gem 'nokogiri'
 gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'react_on_rails'
 gem 'rolify'
@@ -43,7 +44,8 @@ gem 'will_paginate-bootstrap'
 # gem 'slack-ruby-client'
 # gem 'celluloid-io', require: ['celluloid/current', 'celluloid/io']
 
-# gem 'npm_api'
+# python stats
+gem 'rest-client'
 
 group :development, :test do
   gem 'capistrano', '3.3.5'
