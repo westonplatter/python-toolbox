@@ -1,0 +1,4 @@
+# github_initialize_search_repos_job:
+#   cron: "0 0 */5 * *"
+#   class: "GithubInitializeSearchReposJob"
+#   queue: github

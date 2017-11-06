@@ -8,4 +8,7 @@ Rails.application.routes.draw do
   resources :packages
 
   root 'home#index'
+
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
 end

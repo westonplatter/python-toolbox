@@ -1,6 +1,9 @@
 class PypiFetchPackageJob
   include Sidekiq::Worker
 
+  sidekiq_options \
+    :retry => 5
+
   def perform(package_name)
     package = Package.where(name: package_name).first
 

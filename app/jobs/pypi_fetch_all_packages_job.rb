@@ -8,7 +8,7 @@ class PypiFetchAllPackagesJob
 
     html_page.css("a").each do |link|
       package_name = link.attr("href")
-      PypiFetchPackage.perform_async(package_name)
+      PypiFetchPackageJob.perform_async(package_name)
     end
 
     # ping slack

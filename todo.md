@@ -3,7 +3,8 @@
   - [x] layout
   - [ ] header
   - [ ] footer
-- [ ] install sidekiq
+
+- [x] install sidekiq
 
 - [ ] create basic models
   - [ ] repo, may have a package
