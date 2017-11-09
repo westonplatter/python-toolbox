@@ -1,5 +1,10 @@
 <h2><%= @package.name %></h2>
 
+<% if @package.json_data && @package.json_data['info']  %>
+  <% markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, tables: true) %>
+  <%= markdown.render(JSON.parse(@package.json_data)['info']['description']).html_safe %>
+<% end %>
+
 <% if params[:x] %>
   <div class="row">
     <div class="col-md-12">
