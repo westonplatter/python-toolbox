@@ -1,0 +1,9 @@
+<h2><%= @package.name %></h2>
+
+<% if params[:x] %>
+  <div class="row">
+    <div class="col-md-12">
+      <%= link_to "edit", package_path(@package), class: "btn btn-default btn-primary" %>
+    </div>
+  </div>
+<% end %>

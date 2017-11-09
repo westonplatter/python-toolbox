@@ -6,8 +6,7 @@ class PackagesController < ApplicationController
     render "packages/index"
   end
 
-  # def show
-  #   @package = Pacakge.find_by(name: params[:name])
-  #   render "packages/show"
-  # end
+  def show
+    @package = Package.find(params[:id])
+  end
 end
