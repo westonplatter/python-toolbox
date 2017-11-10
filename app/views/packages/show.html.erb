@@ -1,9 +1,21 @@
 <h2><%= @package.name %></h2>
 
-<% if @package.json_data && @package.json_data['info']  %>
+<div class="row">
+  <div class="col-md-12">
+
+    <ul>
+      <%  @package.releases.each do |release| %>
+        <li><%= release.key %> | <%= release.packagetype %> | <%= release.downloads %></li>
+      <% end %>
+    </ul>
+
+  </div>
+</div>
+
+<!-- <% if @package.json_data && @package.json_data['info']  %>
   <% markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, tables: true) %>
   <%= markdown.render(JSON.parse(@package.json_data)['info']['description']).html_safe %>
-<% end %>
+<% end %> -->
 
 <% if params[:x] %>
   <div class="row">

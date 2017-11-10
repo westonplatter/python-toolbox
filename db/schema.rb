@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171105224552) do
+ActiveRecord::Schema.define(version: 20171110170922) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,23 @@ ActiveRecord::Schema.define(version: 20171105224552) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_packages_on_name"
+  end
+
+  create_table "releases", force: :cascade do |t|
+    t.bigint "package_id"
+    t.string "key"
+    t.jsonb "json_data"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "total_downloads"
+    t.boolean "has_sig"
+    t.datetime "upload_time"
+    t.string "python_version"
+    t.integer "downloads"
+    t.string "packagetype"
+    t.integer "size"
+    t.index ["package_id", "key", "packagetype"], name: "index_releases_on_package_id_and_key_and_packagetype"
+    t.index ["package_id"], name: "index_releases_on_package_id"
   end
 
 end

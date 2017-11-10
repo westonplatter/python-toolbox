@@ -13,7 +13,12 @@ class PypiFetchPackageJob
 
     url = "https://pypi.python.org/pypi/#{package.name}/json"
     response = RestClient.get(url)
-    package.json_data = response.body
+
+    binding.pry
+
+    return if (response.status_code != 200) || (response.body.nil?)
+
+    package.json_data['info'] = response.body
     package.save!
 
     package.digest_json_data

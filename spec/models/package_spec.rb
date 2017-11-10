@@ -1,5 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Package, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "factory" do
+    it "works" do
+      expect { FactoryGirl.create(:package) }.to change{ Package.count }.by(1)
+    end
+  end
 end
