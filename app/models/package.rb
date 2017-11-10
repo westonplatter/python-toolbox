@@ -24,7 +24,7 @@ class Package < ApplicationRecord
   def digest_json_data_releases
     json_releases = JSON.parse(json_data)['releases']
 
-    keys = json_releases.keys
+    return nil if json_releases.nil?
 
     json_releases.each do |key, jsons|
       if jsons == []
@@ -36,5 +36,7 @@ class Package < ApplicationRecord
         end
       end
     end
+
+    return true
   end
 end
