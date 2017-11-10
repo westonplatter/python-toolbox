@@ -1,6 +1,6 @@
 class Package < ApplicationRecord
 
-  has_many :releases
+  has_many :releases, dependent: :destroy
 
   def to_param
     name
@@ -16,13 +16,14 @@ class Package < ApplicationRecord
     end
   end
 
-  def save_json_info
-    info = JSON.parse(json_data)['info']
-    update_attributes(json_data: info)
+  def calculate_stats
+    total_downloads = total_downloads = releases.sum(:downloads)
+    self.update_attributes(total_downloads: total_downloads)
   end
 
-  def digest_json_data_releases
-    json_releases = JSON.parse(json_data)['releases']
+
+  def digest_json_data_releases(json_data)
+    json_releases = JSON.parse(json_data)
 
     return nil if json_releases.nil?
 

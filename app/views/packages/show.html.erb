@@ -2,20 +2,43 @@
 
 <div class="row">
   <div class="col-md-12">
+    <p><b>Source Code Url</b>: <%= @package.source_code_url %></p>
+    <p><b>Total Downloads</b>: <%= number_with_delimiter(@package.total_downloads || 0) %></p>
+  </div>
+</div>
 
-    <ul>
-      <%  @package.releases.each do |release| %>
+
+
+<div class="row">
+  <div class="col-md-12">
+
+    <!-- <ul>
+      <% @package.releases.each do |release| %>
         <li><%= release.key %> | <%= release.packagetype %> | <%= release.downloads %></li>
       <% end %>
-    </ul>
+    </ul> -->
+
+    <!-- <ul>
+      <% JSON.parse(@package.json_data).each do |k,v| %>
+        <li><%= k %> | <%= v %></li>
+      <% end %>
+    </ul> -->
 
   </div>
 </div>
 
-<!-- <% if @package.json_data && @package.json_data['info']  %>
-  <% markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, tables: true) %>
-  <%= markdown.render(JSON.parse(@package.json_data)['info']['description']).html_safe %>
-<% end %> -->
+<div class="row">
+  <div class="col-md-1">
+  </div>
+  <div class="col-md-10">
+    <% if @package.json_data  %>
+      <% markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, tables: true) %>
+      <%= markdown.render(JSON.parse(@package.json_data)['description']).html_safe %>
+    <% end %>
+  </div>
+  <div class="col-md-1">
+  </div>
+</div>
 
 <% if params[:x] %>
   <div class="row">
