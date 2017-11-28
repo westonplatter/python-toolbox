@@ -43,8 +43,8 @@ gem 'will_paginate-bootstrap'
 
 # ai / bot / slack
 # gem 'slack-ruby-bot'
-# gem 'slack-ruby-client'
-# gem 'celluloid-io', require: ['celluloid/current', 'celluloid/io']
+gem 'slack-ruby-client'
+gem 'celluloid-io', require: ['celluloid/current', 'celluloid/io']
 
 # python stats
 gem 'rest-client'

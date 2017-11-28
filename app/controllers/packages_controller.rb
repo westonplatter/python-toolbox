@@ -4,11 +4,15 @@ class PackagesController < ApplicationController
 
   def search
     name = params[:q_name]
+
+    PingSlackWorker.perform_async("PackagesController - search -- q_name = #{name}")
+
     @packages = Package.where("name ILIKE ?", "%#{name}%")
     render "packages/index"
   end
 
   def show
+    PingSlackWorker.perform_async("PackagesController - show -- package_name = #{@package.name}")
   end
 
   private

@@ -112,6 +112,27 @@ GEM
     capybara-screenshot (1.0.17)
       capybara (>= 1.0, < 3)
       launchy
+    celluloid (0.17.3)
+      celluloid-essentials
+      celluloid-extras
+      celluloid-fsm
+      celluloid-pool
+      celluloid-supervision
+      timers (>= 4.1.1)
+    celluloid-essentials (0.20.5)
+      timers (>= 4.1.1)
+    celluloid-extras (0.20.5)
+      timers (>= 4.1.1)
+    celluloid-fsm (0.20.5)
+      timers (>= 4.1.1)
+    celluloid-io (0.17.3)
+      celluloid (>= 0.17.2)
+      nio4r (>= 1.1)
+      timers (>= 4.1.1)
+    celluloid-pool (0.20.5)
+      timers (>= 4.1.1)
+    celluloid-supervision (0.20.6)
+      timers (>= 4.1.1)
     cliver (0.3.2)
     coderay (1.1.2)
     concurrent-ruby (1.0.5)
@@ -143,6 +164,8 @@ GEM
       i18n (~> 0.5)
     faraday (0.9.2)
       multipart-post (>= 1.2, < 3)
+    faraday_middleware (0.12.2)
+      faraday (>= 0.7.4, < 1.0)
     ffi (1.9.18)
     figaro (1.1.1)
       thor (~> 0.14)
@@ -158,6 +181,7 @@ GEM
       faraday (~> 0.8, < 0.10)
       hashie (>= 3.4)
       oauth2 (~> 1.0)
+    gli (2.17.1)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
     guard (2.14.1)
@@ -182,6 +206,7 @@ GEM
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
     hashie (3.5.6)
+    hitimes (1.2.6)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     i18n (0.8.6)
@@ -351,6 +376,13 @@ GEM
     simple_form (3.5.0)
       actionpack (> 4, < 5.2)
       activemodel (> 4, < 5.2)
+    slack-ruby-client (0.11.0)
+      activesupport
+      faraday (>= 0.9)
+      faraday_middleware
+      gli
+      hashie
+      websocket-driver
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-commands-rspec (1.0.4)
@@ -373,6 +405,8 @@ GEM
     thor (0.20.0)
     thread_safe (0.3.6)
     tilt (2.0.8)
+    timers (4.1.2)
+      hitimes
     tzinfo (1.2.3)
       thread_safe (~> 0.1)
     uglifier (3.2.0)
@@ -423,6 +457,7 @@ DEPENDENCIES
   capistrano3-puma
   capybara
   capybara-screenshot
+  celluloid-io
   database_cleaner
   devise
   factory_girl_rails
@@ -458,6 +493,7 @@ DEPENDENCIES
   sidekiq-cron
   sidekiq-throttled
   simple_form
+  slack-ruby-client
   spring
   spring-commands-rspec
   spring-watcher-listen (~> 2.0.0)
