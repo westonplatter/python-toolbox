@@ -5,3 +5,4 @@ production:
   :concurrency: 3
 :queues:
   - [default, 1]
+  - [slack, 3]
