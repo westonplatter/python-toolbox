@@ -13,6 +13,6 @@ test:
 
 production:
   <<: *default
-  database: python_toolbox_production
+  database: python-toolbox
   username: ubuntu
   password: password

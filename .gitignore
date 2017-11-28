@@ -22,3 +22,6 @@
 /node_modules
 
 public/assets
+
+application.yml
+
