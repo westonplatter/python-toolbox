@@ -2,7 +2,7 @@
 
 <div class="row">
   <div class="col-md-12">
-    <p><b>Source Code Url</b>: <%= @package.source_code_url %></p>
+    <p><b>Source Code Url</b>: <%= link_to @package.source_code_url, @package.source_code_url, target: "_blank" %></p>
     <p><b>Total Downloads</b>: <%= number_with_delimiter(@package.total_downloads || 0) %></p>
   </div>
 </div>

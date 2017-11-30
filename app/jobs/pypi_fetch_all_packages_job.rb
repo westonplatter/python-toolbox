@@ -2,7 +2,7 @@ class PypiFetchAllPackagesJob
   include Sidekiq::Worker
 
   def perform
-    PingSlackWorker.perform_async("PypiFetchAllPackagesJob - started")
+    PingSlackJob.perform_async("PypiFetchAllPackagesJob - started")
 
     html_page = Nokogiri::HTML(open("https://pypi.python.org/simple/"))
 
@@ -11,6 +11,6 @@ class PypiFetchAllPackagesJob
       PypiFetchPackageJob.perform_async(package_name)
     end
 
-    PingSlackWorker.perform_async("PypiFetchAllPackagesJob - finished")
+    PingSlackJob.perform_async("PypiFetchAllPackagesJob - finished")
   end
 end
