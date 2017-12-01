@@ -15,7 +15,7 @@ class PackagesController < ApplicationController
   end
 
   def show
-    PingSlackJob.perform_async("PackagesController - show -- package_name = #{@package.name}")
+    # PingSlackJob.perform_async("PackagesController - show -- package_name = #{@package.name}")
   end
 
   private
