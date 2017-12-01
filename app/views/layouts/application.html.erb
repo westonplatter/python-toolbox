@@ -6,21 +6,11 @@
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application'  %>
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110434180-1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'UA-110434180-1');
-    </script>
   </head>
 
   <body>
-
     <nav class="navbar navbar-default">
-      <div class="container-fluid">
+      <div class="container-fluid maxwidth-1200">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
             <span class="sr-only">Toggle navigation</span>
@@ -52,7 +42,7 @@
           <% if !current_page?(root_url) %>
             <%= search_form_for(@q, url: "/search", method: :get) do |f| %>
               <%= f.search_field :name_cont, class: "form-control", placeholder: "Search", style: "width: 400px; display: inline-block; color: black;" %>
-              <%= f.submit "Search", class: "btn btn-default" %>
+              <%= f.submit "Search", class: "btn btn-default", style: "margin-bottom: 4px;" %>
             <% end %>
           <% end %>
 
@@ -63,10 +53,32 @@
       </div>
     </nav>
 
+    <div class="container-fluid maxwidth-1200">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="alert alert-info" role="alert">
+            <p class="text-center"><b>Check out the public road map</b> => https://trello.com/b/fdLlNnZK/python-toolbox-roadmap</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
     <div class="container">
       <%= yield %>
     </div>
 
     <!-- footer goes here -->
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110434180-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-110434180-1');
+    </script>
   </body>
 </html>
