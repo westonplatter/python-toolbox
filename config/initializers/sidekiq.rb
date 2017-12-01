@@ -1,5 +1,8 @@
 require 'sidekiq'
 
+require "sidekiq/throttled"
+Sidekiq::Throttled.setup!
+
 Sidekiq::Extensions.enable_delay!
 
 Sidekiq.configure_client do |config|

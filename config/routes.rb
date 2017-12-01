@@ -1,12 +1,13 @@
-Rails.application.routes.draw do
-  # devise_for :users,
-  #   :controllers => { :registrations => "users/registrations" }
+require 'sidekiq/web'
+require 'sidekiq/throttled/web'
 
-  # authenticate :user do
-    require 'sidekiq/web'
+Rails.application.routes.draw do
+  devise_for :users
+
+  authenticate :user, lambda { |u| u.admin? } do
+    Sidekiq::Throttled::Web.enhance_queues_tab!
     mount Sidekiq::Web => '/sidekiq'
-    # Sidekiq::Throttled::Web.enhance_queues_tab!
-  # end
+  end
 
   root to: 'home#index'
   get '/' => "home#index"

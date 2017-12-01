@@ -40,15 +40,21 @@
           </ul>
 
           <% if !current_page?(root_url) %>
-            <%= search_form_for(@q, url: "/search", method: :get) do |f| %>
+            <%= search_form_for(@q, url: "/search", method: :get, class: "display-inline-block") do |f| %>
               <%= f.search_field :name_cont, class: "form-control", placeholder: "Search", style: "width: 400px; display: inline-block; color: black;" %>
               <%= f.submit "Search", class: "btn btn-default", style: "margin-bottom: 4px;" %>
             <% end %>
           <% end %>
 
-          <!-- <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Link</a></li>
-          </ul> -->
+          <ul class="nav navbar-nav navbar-right">
+            <% if current_user %>
+              <li><%= link_to "Logout", user_registration_path, method: :delete %></li>
+            <% else %>
+              <li><%= link_to "Login", new_user_session_path %></li>
+              <li><%= link_to "Sign Up", new_user_registration_path %></li>
+            <% end %>
+          </ul>
+
         </div>
       </div>
     </nav>
