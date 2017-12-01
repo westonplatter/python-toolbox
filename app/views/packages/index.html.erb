@@ -1,5 +1,7 @@
 <h3>Packages</h3>
 
+<%= will_paginate @packages, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+
 <table class="table">
   <thead>
     <tr>
@@ -18,5 +20,6 @@
       </tr>
     <% end %>
   </tbody>
-
 </table>
+
+<%= will_paginate @packages, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>

@@ -6,7 +6,10 @@ class PackagesController < ApplicationController
     PingSlackJob.perform_async("PackagesController - search -- q_name = #{params['q']}")
 
     @q = Package.ransack(params[:q])
-    @packages = @q.result(distinct: true).order("total_downloads desc")
+    @packages = @q.
+      result(distinct: true).
+      order("total_downloads desc").
+      paginate(:page => params[:page], :per_page => 30)
 
     render "packages/index"
   end
