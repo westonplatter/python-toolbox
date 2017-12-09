@@ -11,8 +11,7 @@ gem 'aasm'
 gem 'annotate'
 gem 'awesome_print', require: true
 gem 'bootstrap', '4.0.0.beta2.1'
-gem 'bootstrap-will_paginate'
-gem 'bootswatch-rails'
+# gem 'bootstrap-will_paginate'
 gem 'devise'
 gem 'figaro'
 gem 'font-awesome-rails'
@@ -39,7 +38,7 @@ gem 'tether-rails'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'uglifier', '>= 1.3.0'
 gem 'webpacker', '~> 3.0'
-# gem 'will_paginate-bootstrap4'
+gem 'will_paginate-bootstrap4'
 
 # ai / bot / slack
 # gem 'slack-ruby-bot'
