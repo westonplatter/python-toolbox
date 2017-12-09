@@ -2,35 +2,56 @@
 
 <div class="row">
   <div class="col-md-12">
-    <p><b>Source Code Url</b>: <%= link_to @package.source_code_url, @package.source_code_url, target: "_blank" %></p>
+    <p>
+      <b>Source Code Url</b>:
+      <%= link_to @package.source_code_url_render, @package.source_code_url_render_url, target: "_blank" %></p>
+
     <p><b>Total Downloads</b>: <%= number_with_delimiter(@package.total_downloads || 0) %></p>
   </div>
 </div>
 
-
-
 <div class="row">
   <div class="col-md-12">
 
-    <!-- <ul>
-      <% @package.releases.each do |release| %>
-        <li><%= release.key %> | <%= release.packagetype %> | <%= release.downloads %></li>
-      <% end %>
-    </ul> -->
+    <table class="table">
+      <p>
+        <%= link_to 'All Versions', '#', class: 'btn btn-small btn-outline-primary' %>
+      </p>
 
-    <!-- <ul>
-      <% JSON.parse(@package.json_data).each do |k,v| %>
-        <li><%= k %> | <%= v %></li>
-      <% end %>
-    </ul> -->
+      <thead>
+        <th>Version</th>
+        <th>Upload Date</th>
+        <th>Downloads</th>
+      </thead>
 
+      <tbody>
+        <% @package.releases_grouped_by_key_date.order("upload_date").select{|x| x.total_downloads != 0}.first(10).each do |release| %>
+          <tr>
+            <td><%= release.key %></td>
+            <td><%= release.upload_date.try(:to_date) %></td>
+            <td><%= number_with_delimiter(release.total_downloads) %></td>
+          </tr>
+        <% end %>
+
+        <tr>
+          <td><%= link_to "#{@package.releases_grouped_by_key_date.to_a.count - 10} versions not show", '#', class: 'btn btn-sm btn-outline-primary' %></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
 
+
+<!-- <ul>
+  <% JSON.parse(@package.json_data).each do |k,v| %>
+    <li><%= k %> | <%= v %></li>
+  <% end %>
+</ul> -->
+
 <div class="row">
-  <div class="col-md-1">
-  </div>
-  <div class="col-md-10">
+  <div class="col-md-10 pt-readme">
     <% if @package.json_data  %>
       <% markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, tables: true) %>
       <%= markdown.render(JSON.parse(@package.json_data)['description']).html_safe %>

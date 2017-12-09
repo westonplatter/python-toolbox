@@ -9,68 +9,68 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-default">
-      <div class="container-fluid maxwidth-1200">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="<%= root_path %>">Python Toolbox</a>
-        </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" id="nav">
+      <a class="navbar-brand" href="<%= root_path %>">Python-Toolbox</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <!-- <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li> -->
-            <!-- <li><a href="#">Link</a></li> -->
-            <!-- <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-                <li class="divider"></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
-            </li> -->
-          </ul>
+      <div class="collapse navbar-collapse" id="navbarColor03">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="<%= root_path %>">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="#">Features</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Pricing</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li> -->
+        </ul>
 
-          <% if !current_page?(root_url) %>
-            <%= search_form_for(@q, url: "/search", method: :get, class: "display-inline-block") do |f| %>
-              <%= f.search_field :name_cont, class: "form-control", placeholder: "Search", style: "width: 400px; display: inline-block; color: black;" %>
-              <%= f.submit "Search", class: "btn btn-default", style: "margin-bottom: 4px;" %>
-            <% end %>
+        <% if !current_page?(root_url) %>
+          <%= search_form_for(@q, url: "/search", method: :get, class: "display-inline-block") do |f| %>
+            <%= f.search_field :name_cont, class: "form-control", placeholder: "Search", style: "width: 400px; display: inline-block; color: black;" %>
+            <%= f.submit "Search", class: "btn btn-default", style: "margin-bottom: 4px;" %>
           <% end %>
+        <% end %>
 
-          <ul class="nav navbar-nav navbar-right">
-            <% if current_user %>
-              <li><%= link_to "Logout", user_registration_path, method: :delete %></li>
-            <% else %>
-              <li><%= link_to "Login", new_user_session_path %></li>
-              <li><%= link_to "Sign Up", new_user_registration_path %></li>
-            <% end %>
-          </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <% if current_user %>
+          <li class="nav-item">
+            <%= link_to "Logout", user_registration_path, method: :delete, class: "nav-link"%>
+          </li>
+          <% else %>
+            <%= link_to "Login", new_user_session_path, class: "nav-link"%>
+            <%= link_to "Sign Up", new_user_registration_path, class: "nav-link"%>
+          <% end %>
+        </ul>
 
-        </div>
+        <!-- <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search">
+          <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+        </form> -->
       </div>
     </nav>
 
-    <div class="container-fluid maxwidth-1200">
+    <div class="container-fluid maxwidth-1200" style="margin-top: 15px;">
       <div class="row">
         <div class="col-md-12">
-          <div class="alert alert-info" role="alert">
-            <p class="text-center"><b>Check out the public road map</b> =>
-              <a href="https://trello.com/b/fdLlNnZK/python-toolbox-roadmap" target: "_blank">https://trello.com/b/fdLlNnZK/python-toolbox-roadmap</a>
-            </p>
+          <div class="card text-white bg-primary mb-3">
+            <!-- <div class="card-header">Header</div> -->
+            <div class="card-body">
+              <!-- <h4 class="card-title"></h4> -->
+              <p class="card-text text-center">
+                <b>Check out the public road map</b> => <u><a style="color: white; " href="https://trello.com/b/fdLlNnZK/python-toolbox-roadmap" target: "_blank">https://trello.com/b/fdLlNnZK/python-toolbox-roadmap</a></u>
+              </p>
+            </div>
           </div>
+
         </div>
-
       </div>
-
     </div>
 
     <div class="container">

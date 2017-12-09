@@ -14,7 +14,7 @@
   <tbody>
     <% @packages.each do |package| %>
       <tr>
-        <td><%= link_to "view", package_path(package), class: "btn btn-sm btn-default" %></td>
+        <td><%= link_to "view", package_path(package), class: "btn btn-outline-primary btn-sm" %></td>
         <td><%= package.name %></td>
         <td><%= number_with_delimiter(package.total_downloads) %></td>
       </tr>

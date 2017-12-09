@@ -1,9 +1,6 @@
-// ordering is important. see https://github.com/maxim/bootswatch-rails#usage
-@import "bootstrap-sprockets";
-@import "bootstrap/mixins";
-@import "bootswatch/simplex/variables";
+@import "bootswatch_lumen_variables";
 @import "bootstrap";
-@import "bootswatch/simplex/bootswatch";
+@import "bootswatch_lumen";
 
 
 /* ---------------------------------------------------------------   header   */
@@ -24,4 +21,18 @@
 
 .display-inline-block {
   display: inline-block;
+}
+
+
+ul.pt-ul-noindent {
+  // list-style-type: disc;
+  // -webkit-margin-before: 1em;
+  // -webkit-margin-after: 1em;
+  // -webkit-margin-start: 0px;
+  // -webkit-margin-end: 0px;
+  -webkit-padding-start: 0px;
+
+  li {
+    display: block;
+  }
 }
