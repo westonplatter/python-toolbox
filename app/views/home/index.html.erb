@@ -9,13 +9,14 @@
 <br>
 
 <div class='row'>
-  <div class='col-md-4 col-md-offset-4 col-xs-6 col-xs-offset-3'>
+  <div class='col'></div>
+  <div class='col-7'>
     <%= search_form_for(@q, url: "/search", method: :get) do |f| %>
-      <div class='form-group'>
+      <div class='form-group' style: "width: 25%; margin-left: 37.5%;">
         <%= f.search_field :name_cont, class: "form-control", placeholder: "Topic or Package Name" %>
       </div>
-
-      <%= f.submit "Search", class: "btn btn-default", style: "width: 50%; margin-left: 25%;"%>
+      <%= f.submit "Search", class: "btn btn-lg btn-primary", style: "width: 50%; margin-left: 25%;"%>
     <% end %>
   </div>
+  <div class='col'></div>
 </div>
