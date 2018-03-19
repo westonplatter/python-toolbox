@@ -17,27 +17,20 @@ export default class HelloWorld extends React.Component {
     this.state = { name: this.props.name };
   }
 
-  updateName = (name) => {
-    this.setState({ name });
-  };
-
   render() {
     return (
       <div>
-        <h3>
-          Hello, {this.state.name}!
-        </h3>
-        <hr />
-        <form >
+        <h2>Search</h2>
+        <form url="/packages" action="get">
           <label htmlFor="name">
             Say hello to:
           </label>
           <input
-            id="name"
+            name="name_cont"
             type="text"
-            value={this.state.name}
-            onChange={(e) => this.updateName(e.target.value)}
           />
+          <br/>
+          <button type="submit">Submit</button>
         </form>
       </div>
     );

@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: packages
+#
+#  id              :integer          not null, primary key
+#  name            :string
+#  source_code_url :string
+#  total_downloads :integer
+#  score           :integer
+#  json_data       :jsonb
+#  releases_json   :jsonb
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+
 class Package < ApplicationRecord
 
   has_many :releases, dependent: :destroy
@@ -41,7 +56,6 @@ class Package < ApplicationRecord
     total_downloads = total_downloads = releases.sum(:downloads)
     self.update_attributes(total_downloads: total_downloads)
   end
-
 
   def digest_json_data_releases(json_data)
     json_releases = JSON.parse(json_data)

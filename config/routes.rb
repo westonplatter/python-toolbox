@@ -18,11 +18,10 @@ Rails.application.routes.draw do
   # get '/services' => 'home#services'
   # get '/thankyou' => 'home#thankyou'
 
-  get 'hello_world', to: 'hello_world#index'
-
   get '/search' => 'packages#search'
 
-  resources :packages, :constraints => { :id => /([^\/]+?)(?=\.json|\.html|$|\/)/ } do
+  resources :packages,
+    :constraints => { :id => /([^\/]+?)(?=\.json|\.html|$|\/)/ } do
   end
 
   # resources :authors,
