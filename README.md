@@ -17,4 +17,3 @@ rake spec
 ```sh
 cap production deploy
 ```
-
