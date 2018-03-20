@@ -3,13 +3,12 @@ class PypiFetchPackageJob
   include Sidekiq::Throttled::Worker
 
   sidekiq_options \
-    :retry => 5
+    :retry => 5,
+    :queue => :pypi
 
   sidekiq_throttle({
-    # Allow maximum 2 concurrent jobs of this class at a time
-    :concurrency => { :limit => 2 },
-    # Allow maximum 1K jobs being processed within one hour window
-    :threshold => { :limit => 6000, :period => 1.hour }
+    :concurrency => { :limit => 1 },
+    :threshold => { :limit => 1, :period => 3.seconds }
   })
 
   def perform(package_name)

@@ -47,6 +47,7 @@ gem 'celluloid-io', require: ['celluloid/current', 'celluloid/io']
 
 # python stats
 gem 'rest-client'
+gem 'octokit'
 
 group :development, :test do
   gem 'capistrano', '3.3.5'
