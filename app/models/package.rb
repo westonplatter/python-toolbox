@@ -75,4 +75,16 @@ class Package < ApplicationRecord
 
     return true
   end
+
+  def extract_github_username
+    return nil if github_url.nil?
+    parts = github_url.split("/")
+    index = parts.size-2
+    username = parts[index]
+  end
+
+  def extract_github_projectname
+    return nil if github_url.nil?
+    projectname = github_url.split("/").last
+  end
 end

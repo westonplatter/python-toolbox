@@ -18,5 +18,7 @@ FactoryGirl.define do
 
   factory :package do
     name { generate(:unique_name) }
+
+    github_url "https://github.com/x/y/"
   end
 end
