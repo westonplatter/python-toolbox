@@ -7,8 +7,8 @@ end
 
 gem 'rails', '~> 5.1.1'
 
-gem 'aasm'
 gem 'annotate'
+gem 'aasm'
 gem 'awesome_print', require: true
 gem 'bootstrap', '4.0.0.beta2.1'
 # gem 'bootstrap-will_paginate'

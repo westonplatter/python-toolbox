@@ -11,6 +11,8 @@
 #  releases_json   :jsonb
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  github_readme   :text
+#  github_url      :string
 #
 
 class Package < ApplicationRecord
@@ -47,7 +49,7 @@ class Package < ApplicationRecord
       if JSON.parse(json_data)['home_page'].include?("github.com")
         home_page = JSON.parse(json_data)['home_page']
         return if source_code_url == home_page
-        self.update_attributes(source_code_url: home_page)
+        self.update_attributes(source_code_url: home_page, github_url: home_page)
       end
     end
   end
