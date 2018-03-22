@@ -8,7 +8,7 @@ class GithubFetchReadmeJob
 
   sidekiq_throttle({
     :concurrency => { :limit => 1 },
-    :threshold => { :limit => 1, :period => 10.seconds }
+    :threshold => { :limit => 2, :period => 3.seconds }
   })
 
   def perform(package_id)
@@ -19,11 +19,10 @@ class GithubFetchReadmeJob
     username = package.extract_github_username
     projectname = package.extract_github_projectname
 
-    readme = Octokit.readme "#{username}/#{projectname}", :accept => 'application/vnd.github.html'
+    client = Octokit::Client.new(:access_token => ENV['github_access_token'])
+    readme = client.readme("#{username}/#{projectname}", :accept => 'application/vnd.github.html')
 
-    html = Nokogiri::HTML(readme)
-
-    html.search('.octicon.octicon-link').each do |link|
+    Nokogiri::HTML(readme).search('.octicon.octicon-link').each do |link|
       link.remove
     end
 
