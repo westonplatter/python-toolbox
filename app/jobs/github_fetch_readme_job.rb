@@ -22,11 +22,12 @@ class GithubFetchReadmeJob
     client = Octokit::Client.new(:access_token => ENV['github_access_token'])
     readme = client.readme("#{username}/#{projectname}", :accept => 'application/vnd.github.html')
 
-    Nokogiri::HTML(readme).search('.octicon.octicon-link').each do |link|
+    html = Nokogiri::HTML(readme)
+
+    html.search('.octicon.octicon-link').each do |link|
       link.remove
     end
 
-    package.github_readme = html.to_s
-    package.save
+    package.update_attributes(github_readme: html.to_s)
   end
 end
