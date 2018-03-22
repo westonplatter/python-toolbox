@@ -46,7 +46,7 @@ class Package < ApplicationRecord
 
   def digest_json_data
     if json_data && JSON.parse(json_data) && JSON.parse(json_data)['home_page']
-      if JSON.parse(json_data)['home_page'].include?("github.com")
+      if JSON.parse(json_data)['home_page'].include?("github.com/")
         home_page = JSON.parse(json_data)['home_page']
         return if source_code_url == home_page
         self.update_attributes(source_code_url: home_page, github_url: home_page)
