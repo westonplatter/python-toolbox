@@ -19,8 +19,12 @@ class GithubFetchReadmeJob
     username = package.extract_github_username
     projectname = package.extract_github_projectname
 
-    client = Octokit::Client.new(:access_token => ENV['github_access_token'])
-    readme = client.readme("#{username}/#{projectname}", :accept => 'application/vnd.github.html')
+    begin
+      client = Octokit::Client.new(:access_token => ENV['github_access_token'])
+      readme = client.readme("#{username}/#{projectname}", :accept => 'application/vnd.github.html')
+    rescue Octokit::NotFound => e
+      return
+    end
 
     html = Nokogiri::HTML(readme)
 
