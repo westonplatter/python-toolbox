@@ -3,7 +3,7 @@ class GithubFetchReadmeJob
   include Sidekiq::Throttled::Worker
 
   sidekiq_options \
-    :retry => 5,
+    :retry => 1,
     :queue => :github
 
   sidekiq_throttle({

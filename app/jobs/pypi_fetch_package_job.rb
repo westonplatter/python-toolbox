@@ -3,7 +3,7 @@ class PypiFetchPackageJob
   include Sidekiq::Throttled::Worker
 
   sidekiq_options \
-    :retry => 5,
+    :retry => 1,
     :queue => :pypi
 
   sidekiq_throttle({
