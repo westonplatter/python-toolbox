@@ -18,8 +18,6 @@ class PackagesController < ApplicationController
       result(distinct: true).
       order("total_downloads desc").
       paginate(:page => params[:page], :per_page => 30)
-
-    # render 'packages/index'
   end
 
   def show

@@ -2,17 +2,22 @@
 #
 # Table name: packages
 #
-#  id              :integer          not null, primary key
-#  name            :string
-#  source_code_url :string
-#  total_downloads :integer
-#  score           :integer
-#  json_data       :jsonb
-#  releases_json   :jsonb
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  github_readme   :text
-#  github_url      :string
+#  id                 :integer          not null, primary key
+#  name               :string
+#  source_code_url    :string
+#  total_downloads    :integer
+#  score              :integer
+#  json_data          :jsonb
+#  releases_json      :jsonb
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  github_readme      :text
+#  github_url         :string
+#  do_not_change_urls :boolean          default(FALSE)
+#
+# Indexes
+#
+#  index_packages_on_name  (name)
 #
 
 class Package < ApplicationRecord
@@ -45,18 +50,15 @@ class Package < ApplicationRecord
   end
 
   def digest_json_data
+    return if do_not_change_urls
+
     if json_data && JSON.parse(json_data) && JSON.parse(json_data)['home_page']
-      if JSON.parse(json_data)['home_page'].include?("github.com/")
+      url = JSON.parse(json_data)['home_page']
 
-        url = JSON.parse(json_data)['home_page']
+      if url.include?("github.com/") || url.include?("github.com:")
 
-        if url.include?("@")
-          url = extract_github_url_from_github_ssh_string(url)
-        end
-
-        if url.include?('#')
-          url = url.split('#').first
-        end
+        url = extract_github_url_from_github_ssh_string(url) if url.include?("@")
+        url = url.split('#').first if url.include?('#')
 
         return if source_code_url == url
 

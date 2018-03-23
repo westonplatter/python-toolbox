@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180320161354) do
+ActiveRecord::Schema.define(version: 20180323162342) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20180320161354) do
     t.datetime "updated_at", null: false
     t.text "github_readme"
     t.string "github_url"
+    t.boolean "do_not_change_urls", default: false
     t.index ["name"], name: "index_packages_on_name"
   end
 

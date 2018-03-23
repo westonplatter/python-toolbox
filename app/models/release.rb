@@ -16,6 +16,11 @@
 #  packagetype     :string
 #  size            :integer
 #
+# Indexes
+#
+#  index_releases_on_package_id                          (package_id)
+#  index_releases_on_package_id_and_key_and_packagetype  (package_id,key,packagetype)
+#
 
 class Release < ApplicationRecord
   belongs_to :package
