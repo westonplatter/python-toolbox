@@ -47,11 +47,34 @@ class Package < ApplicationRecord
   def digest_json_data
     if json_data && JSON.parse(json_data) && JSON.parse(json_data)['home_page']
       if JSON.parse(json_data)['home_page'].include?("github.com/")
-        home_page = JSON.parse(json_data)['home_page']
-        return if source_code_url == home_page
-        self.update_attributes(source_code_url: home_page, github_url: home_page)
+
+        url = JSON.parse(json_data)['home_page']
+
+        if url.include?("@")
+          url = extract_github_url_from_github_ssh_string(url)
+        end
+
+        if url.include?('#')
+          url = url.split('#').first
+        end
+
+        return if source_code_url == url
+
+        self.update_attributes(source_code_url: url, github_url: url)
       end
     end
+  end
+
+  def extract_github_url_from_github_ssh_string(string)
+    x = string.
+      split("@").
+      reject {|x| x == "git" }.
+      join("").
+      gsub(":", "/").
+      split(".git").
+      join("")
+
+    "https://#{x}"
   end
 
   def calculate_stats
