@@ -8,7 +8,7 @@ class GithubFetchReadmeJob
 
   sidekiq_throttle({
     :concurrency => { :limit => 1 },
-    :threshold => { :limit => 30, :period => 10.seconds }
+    :threshold => { :limit => 1, :period => 3.seconds }
   })
 
   def perform(package_id)
