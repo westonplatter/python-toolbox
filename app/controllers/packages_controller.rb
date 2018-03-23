@@ -1,7 +1,7 @@
 class PackagesController < ApplicationController
 
   def search
-    # PingSlackJob.perform_async("PackagesController - search -- q_name = #{params['q']}")
+    PingSlackJob.perform_async("PackagesController - search -- q_name = #{params['q']}")
 
     @q = Package.ransack(params[:q])
     @packages = @q.
@@ -13,8 +13,6 @@ class PackagesController < ApplicationController
   end
 
   def index
-    # PingSlackJob.perform_async("PackagesController - search -- q_name = #{params['q']}")
-
     @q = Package.ransack(params[:q])
     @packages = @q.
       result(distinct: true).
@@ -26,6 +24,6 @@ class PackagesController < ApplicationController
 
   def show
     @package = Package.find_by(name: params[:id])
-    # PingSlackJob.perform_async("PackagesController - show -- package_name = #{@package.name}")
+    PingSlackJob.perform_async("PackagesController - show -- package_name = #{@package.name}")
   end
 end
