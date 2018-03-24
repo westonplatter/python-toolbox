@@ -20,7 +20,7 @@
     <h5>Categories</h5>
     <p>
       <% @package.categories.flat_map do |c| %>
-        <a class="btn btn-small btn-outline-primary"><%= c.name %></a>
+        <%= link_to c.name, packages_path({:q => {:in_category_id => c.id}}), class: "btn btn-small btn-outline-primary" %>
       <% end %>
     </p>
   </div>
