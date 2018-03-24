@@ -9,15 +9,16 @@ gem 'rails', '~> 5.1.1'
 
 gem 'annotate'
 gem 'aasm'
+gem 'awesome_nested_set'
 gem 'awesome_print', require: true
 gem 'bootstrap', '4.0.0.beta2.1'
-# gem 'bootstrap-will_paginate'
 gem 'devise'
 gem 'figaro'
 gem 'font-awesome-rails'
 gem 'foreman'
 gem 'github_api'
 gem 'jquery-rails'
+gem 'pandoc-ruby'
 gem 'pg'
 gem 'popper_js'
 gem 'puma'
@@ -72,6 +73,7 @@ end
 
 group :development do
   gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'bullet'
   gem 'capistrano-rails-console', :require => false
 

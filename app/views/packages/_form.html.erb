@@ -1,0 +1,5 @@
+<%= simple_form_for(@package, html: { class: 'form-horizontal' }) do |f| %>
+  <%= f.association :categories, as: :check_boxes %>
+  <br>
+  <%= f.submit "Create/Update", class: "btn btn-primary" %>
+<% end %>

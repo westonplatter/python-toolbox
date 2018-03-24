@@ -24,6 +24,9 @@ Rails.application.routes.draw do
     :constraints => { :id => /([^\/]+?)(?=\.json|\.html|$|\/)/ } do
   end
 
+  resources :categories do
+  end
+
   # resources :authors,
   #   only: [:show, :edit, :update],
   #   path: '/',

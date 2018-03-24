@@ -58,13 +58,17 @@ GEM
     arel (8.0.0)
     autoprefixer-rails (7.1.6)
       execjs
+    awesome_nested_set (3.1.4)
+      activerecord (>= 4.0.0, < 5.3)
     awesome_print (1.8.0)
     bcrypt (3.1.11)
-    better_errors (2.3.0)
+    better_errors (2.4.0)
       coderay (>= 1.0.0)
       erubi (>= 1.0.0)
       rack (>= 0.9.0)
     bindex (0.5.0)
+    binding_of_caller (0.7.3)
+      debug_inspector (>= 0.0.1)
     bootstrap (4.0.0.beta2.1)
       autoprefixer-rails (>= 6.0.3)
       popper_js (>= 1.12.3, < 2)
@@ -136,6 +140,7 @@ GEM
     connection_pool (2.2.1)
     crass (1.0.2)
     database_cleaner (1.6.1)
+    debug_inspector (0.0.3)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
     devise (4.3.0)
@@ -148,7 +153,7 @@ GEM
     domain_name (0.5.20170404)
       unf (>= 0.0.5, < 1.0.0)
     dotenv (0.7.0)
-    erubi (1.6.1)
+    erubi (1.7.1)
     et-orbi (1.0.6)
       tzinfo
     execjs (2.7.0)
@@ -254,6 +259,7 @@ GEM
     octokit (4.8.0)
       sawyer (~> 0.8.0, >= 0.5.3)
     orm_adapter (0.5.0)
+    pandoc-ruby (2.0.2)
     pg (0.21.0)
     phantomjs (2.1.1.0)
     poltergeist (1.16.0)
@@ -269,7 +275,7 @@ GEM
     puma (3.10.0)
     pundit (1.1.0)
       activesupport (>= 3.0.0)
-    rack (2.0.3)
+    rack (2.0.4)
     rack-protection (2.0.0)
       rack
     rack-proxy (0.6.2)
@@ -444,8 +450,10 @@ PLATFORMS
 DEPENDENCIES
   aasm
   annotate
+  awesome_nested_set
   awesome_print
   better_errors
+  binding_of_caller
   bootstrap (= 4.0.0.beta2.1)
   bullet
   capistrano (= 3.3.5)
@@ -474,6 +482,7 @@ DEPENDENCIES
   listen (>= 3.0.5, < 3.2)
   nokogiri
   octokit
+  pandoc-ruby
   pg
   phantomjs
   poltergeist
@@ -508,4 +517,4 @@ DEPENDENCIES
   will_paginate-bootstrap4
 
 BUNDLED WITH
-   1.16.0.pre.3
+   1.16.1

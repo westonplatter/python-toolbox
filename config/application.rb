@@ -10,10 +10,10 @@ require "action_view/railtie"
 require "action_cable/engine"
 require "sprockets/railtie"
 
+Bundler.require(*Rails.groups)
+
 require 'open-uri'
 require 'uri'
-
-Bundler.require(*Rails.groups)
 
 module PythonToolbox
   class Application < Rails::Application

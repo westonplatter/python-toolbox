@@ -1,0 +1,6 @@
+%ol.the_sortable_tree{ data: { rebuild_url: rebuild_pages_url } }
+    = sortable_tree @pages, namespace: :admin
+
+<ol class="the_sortable_tree" data-rebuild_url="<%= rebuild_categories_url %>">
+  <%= sortable_tree @categories %>
+</ol>

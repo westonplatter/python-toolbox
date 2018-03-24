@@ -1,0 +1,18 @@
+<h2>Categories</h2>
+
+<br>
+
+<% if current_user %>
+  <%= link_to "new", new_category_path %>
+<% end %>
+
+<ul>
+  <% Category.roots.each do |c| %>
+    <li><%= c.name %><%= current_user ? link_to(" - edit", edit_category_path(c)) : "" %></li>
+
+    <% c.children.each do |children| %>
+      <li><%= c.name %> / <%= children.name %><%= current_user ? link_to(" - edit", edit_category_path(children)) : "" %></li>
+    <% end %>
+
+  <% end %>
+</ul>

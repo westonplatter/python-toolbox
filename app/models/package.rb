@@ -23,6 +23,21 @@
 class Package < ApplicationRecord
 
   has_many :releases, dependent: :destroy
+  has_many :category_packages
+  has_many :categories, through: :category_packages
+
+  accepts_nested_attributes_for :category_packages,
+    reject_if: :all_blank
+
+  scope :in_category_id, -> (cateogry_id = nil) {
+    return Package.where("id < 0") if cateogry_id.nil? # needed when user selects category without any category_packages
+
+    joins(:category_packages => [:category]).where("categories.id = ?", cateogry_id)
+  }
+
+  def self.ransackable_scopes(auth_object = nil)
+    %i(in_category_id)
+  end
 
   def to_param
     name
