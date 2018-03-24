@@ -13,9 +13,9 @@
 
     <div class="col-sm">
       <div class="form-group">
-        <label for="in_category_id">Category</label>
-        <%= f.select :in_category_id,
-              options_from_collection_for_select(Category.all, "id", "name", @q.in_category_id),
+        <label for="descendants_of_category_id">Category</label>
+        <%= f.select :descendants_of_category_id,
+              options_from_collection_for_select(Category.all, "id", "name", @q.descendants_of_category_id),
               {include_blank: true},
               {class: "form-control"}
               %>

@@ -29,15 +29,22 @@ class Package < ApplicationRecord
   accepts_nested_attributes_for :category_packages,
     reject_if: :all_blank
 
-  scope :in_category_id, -> (cateogry_id = nil) {
-    return Package.where("id < 0") if cateogry_id.nil? # needed when user selects category without any category_packages
+  #
+  # Ransack logic
+  #
 
-    joins(:category_packages => [:category]).where("categories.id = ?", cateogry_id)
-  }
+  def self.descendants_of_category_id(category_id)
+    ids = Category.find(category_id).self_and_descendants.collect(&:id)
+    joins(:category_packages => [:category]).where("categories.id IN (?)", ids)
+  end
 
   def self.ransackable_scopes(auth_object = nil)
-    %i(in_category_id)
+    %i(descendants_of_category_id)
   end
+
+  #
+  # rest of model
+  #
 
   def to_param
     name
