@@ -22,6 +22,8 @@ Rails.application.routes.draw do
 
   get "/phpMyAdmin/scripts/setup.php", to: 'home#empty_response'
   get "/otsmobile/app/mgs/mgw.htm", to: 'home#empty_response'
+  get "/bea_wls_deployment_internal", to: 'home#empty_response'
+  get "/status", to: 'home#empty_response'
 
   root to: 'home#index'
 end
