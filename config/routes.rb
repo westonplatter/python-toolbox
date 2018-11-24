@@ -9,14 +9,7 @@ Rails.application.routes.draw do
     mount Sidekiq::Web => '/sidekiq'
   end
 
-  root to: 'home#index'
   get '/' => "home#index"
-
-  # get '/search' => 'repos#search'
-  # get '/about'    => 'home#about'
-  # get '/contact'  => 'home#contact'
-  # get '/services' => 'home#services'
-  # get '/thankyou' => 'home#thankyou'
 
   get '/search' => 'packages#search'
 
@@ -27,19 +20,8 @@ Rails.application.routes.draw do
   resources :categories do
   end
 
-  # resources :authors,
-  #   only: [:show, :edit, :update],
-  #   path: '/',
-  #   :constraints => { :id => /([^\/]+?)(?=\.json|\.html|$|\/)/ } do
-  #
-  #   resources :repos,
-  #     :only =>  [:search, :show, :edit, :update, :destroy],
-  #     :path => '/',
-  #     :constraints => { :author_id => /([^\/]+?)(?=\.json|\.html|$|\/)/, :id => /([^\/]+?)(?=\.json|\.html|$|\/)/ } do
-  #
-  #       member do
-  #         post :enqueue_upsert
-  #       end
-  #   end
-  # end
+  get "/phpMyAdmin/scripts/setup.php", to: 'home#empty_response'
+  get "/otsmobile/app/mgs/mgw.htm", to: 'home#empty_response'
+
+  root to: 'home#index'
 end
